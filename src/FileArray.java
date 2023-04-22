@@ -21,7 +21,7 @@ public class FileArray {
     write(array, new FileOutputStream(filePathName));
   }
 
-  protected void write(int[] array, OutputStream outputStream) throws IOException {
+  protected static void write(int[] array, OutputStream outputStream) throws IOException {
     DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
     dataOutputStream.writeInt(array.length);
 
@@ -35,7 +35,7 @@ public class FileArray {
     return read(new FileInputStream(filePathName));
   }
 
-  protected int[] read(InputStream inputStream) throws IOException {
+  protected static int[] read(InputStream inputStream) throws IOException {
     DataInputStream dataInputStream = new DataInputStream(inputStream);
     int[] array = new int[dataInputStream.readInt()];
 
