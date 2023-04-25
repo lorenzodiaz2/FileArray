@@ -61,20 +61,17 @@ public class FileArray {
     int formatForIndexes = (int) Math.floor(Math.log10(array.length) + 1);
     int formatForElements = findMaxValue(array) != 0 ? (int) Math.floor(Math.log10(findMaxValue(array)) + 1) : 1;
 
-    for (int i = 0; i < n; i++) {
-      if (i < n - 1) {
-        System.out.printf("[%0" + formatForIndexes + "d-%0" + formatForIndexes + "d]", i * elementsPerRow, i * elementsPerRow + (elementsPerRow - 1));
-        for (int j = i * elementsPerRow; j < i * elementsPerRow + elementsPerRow; j++) {
-          System.out.printf(" %" + formatForElements + "d", array[j]);
-        }
-        System.out.println();
-      } else {
-        System.out.printf("[%0" + formatForIndexes + "d-%0" + formatForIndexes + "d]", i * elementsPerRow, array.length - 1);
-
-        for (int j = i * elementsPerRow; j < i * elementsPerRow + (array.length % elementsPerRow == 0 ? elementsPerRow : array.length % elementsPerRow); j++) {
-          System.out.printf(" %" + formatForElements + "d", array[j]);
-        }
+    for (int i = 0; i < n - 1; i++) {
+      System.out.printf("[%0" + formatForIndexes + "d-%0" + formatForIndexes + "d]", i * elementsPerRow, i * elementsPerRow + (elementsPerRow - 1));
+      for (int j = i * elementsPerRow; j < i * elementsPerRow + elementsPerRow; j++) {
+        System.out.printf(" %" + formatForElements + "d", array[j]);
       }
+      System.out.println();
+    }
+
+    System.out.printf("[%0" + formatForIndexes + "d-%0" + formatForIndexes + "d]", (n - 1) * elementsPerRow, array.length - 1);
+    for (int j = (n - 1) * elementsPerRow; j < (n - 1) * elementsPerRow + (array.length % elementsPerRow == 0 ? elementsPerRow : array.length % elementsPerRow); j++) {
+      System.out.printf(" %" + formatForElements + "d", array[j]);
     }
     System.out.println();
   }
