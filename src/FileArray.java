@@ -59,7 +59,7 @@ public class FileArray {
     int elementsPerRow = 5;
     int n = array.length % elementsPerRow == 0 ? array.length / elementsPerRow : array.length / elementsPerRow + 1;
     int formatForIndexes = (int) Math.floor(Math.log10(array.length) + 1);
-    int formatForElements = (int) Math.floor(Math.log10(findMaxValue(array)) + 1);
+    int formatForElements = findMaxValue(array) != 0 ? (int) Math.floor(Math.log10(findMaxValue(array)) + 1) : 1;
 
     for (int i = 0; i < n; i++) {
       if (i < n - 1) {
