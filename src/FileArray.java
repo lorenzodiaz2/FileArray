@@ -18,11 +18,11 @@ public class FileArray {
   }
 
   protected void write(int[] array) throws IOException {
-    write(array, new FileOutputStream(filePathName));
+    write(array, new BufferedOutputStream(new FileOutputStream(filePathName)));
   }
 
   protected static void write(int[] array, OutputStream outputStream) throws IOException {
-    DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
+    DataOutputStream dataOutputStream = new DataOutputStream(new BufferedOutputStream(outputStream));
     dataOutputStream.writeInt(array.length);
 
     for (int values : array) {
@@ -32,11 +32,11 @@ public class FileArray {
   }
 
   protected int[] read() throws IOException {
-    return read(new FileInputStream(filePathName));
+    return read(new BufferedInputStream(new FileInputStream(filePathName)));
   }
 
   protected static int[] read(InputStream inputStream) throws IOException {
-    DataInputStream dataInputStream = new DataInputStream(inputStream);
+    DataInputStream dataInputStream = new DataInputStream(new BufferedInputStream(inputStream));
     int[] array = new int[dataInputStream.readInt()];
 
     for (int i = 0; i < array.length; i++) {

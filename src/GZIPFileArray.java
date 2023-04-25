@@ -14,11 +14,11 @@ public class GZIPFileArray extends FileArray {
 
   @Override
   protected void write(int[] array) throws IOException {
-    write(array, new GZIPOutputStream(new DataOutputStream(new FileOutputStream(filePathName))));
+    write(array, new GZIPOutputStream(new DataOutputStream(new BufferedOutputStream(new FileOutputStream(filePathName)))));
   }
 
   @Override
   protected int[] read() throws IOException {
-    return read(new GZIPInputStream(new DataInputStream(new FileInputStream(filePathName))));
+    return read(new GZIPInputStream(new DataInputStream(new BufferedInputStream(new FileInputStream(filePathName)))));
   }
 }
