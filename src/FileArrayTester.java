@@ -32,5 +32,16 @@ public class FileArrayTester {
         }
       }
     }
+
+    double[][] array = new double[2][32];
+
+    for (int i = 1; i <= 32; i++) {
+      FileArray otherFileArray = new GZIPFileArray(args[0], i);
+      array[0][i - 1] = i;
+      double n = (otherFileArray.getSize() / (4 + 4 * i)) * 100 - 100;
+      array[1][i - 1] = n;
+      System.out.printf("%s%d%s%s%s%.2f%s%n", "grandezza = ", i, ", percentuale piu' ", (n >= 0 ? "grande" : "piccolo"),
+        " rispetto a FileArray = ", (n >= 0 ? array[1][i - 1] : array[1][i - 1] * (-1)), " %");
+    }
   }
 }
